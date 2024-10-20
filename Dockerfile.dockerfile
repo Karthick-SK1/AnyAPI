@@ -1,14 +1,14 @@
-# Use an official Java runtime as a parent image
-FROM openjdk:11-jre-slim
+# Use an official Java 17 runtime as a parent image
+FROM openjdk:17-jdk-slim
 
 # Set the working directory in the container
-WORKDIR /anyapi
+WORKDIR /app
 
 # Copy the packaged JAR file into the container
-COPY target/anyapi-0.0.1-SNAPSHOT.jar.original anyapi.jar
+COPY target/anyapi-0.0.1-SNAPSHOT.jar app.jar
 
-# Expose the application port (default Spring Boot port)
+# Expose the application port
 EXPOSE 1080
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "anyapi.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
